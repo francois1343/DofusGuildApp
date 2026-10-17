@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- =========================================
+         SEO DE BASE
+    ========================================= -->
+    <title>Portail de Guilde - La Confrérie Écarlate | Dofus</title>
+    <meta name="description"
+        content="Portail communautaire de la guilde La Confrérie Écarlate sur Dofus. Consultez les demandes d'entraide, les événements et l'annuaire des membres.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://votre-domaine.fr/">
+
+    <!-- =========================================
+         OPENGRAPH (Discord, Facebook, etc.)
+    ========================================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="La Confrérie Écarlate">
+    <meta property="og:title" content="Portail de Guilde - La Confrérie Écarlate">
+    <meta property="og:description"
+        content="Entraide, événements et annuaire des membres de la guilde La Confrérie Écarlate sur Dofus.">
+    <meta property="og:url" content="https://votre-domaine.fr/">
+    <meta property="og:image" content="https://votre-domaine.fr/assets/og-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- =========================================
+         TWITTER / X CARD
+    ========================================= -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portail de Guilde - La Confrérie Écarlate">
+    <meta name="twitter:description"
+        content="Entraide, événements et annuaire des membres de la guilde La Confrérie Écarlate sur Dofus.">
+    <meta name="twitter:image" content="https://votre-domaine.fr/assets/og-preview.png">
+
+    <!-- =========================================
+         PWA & MOBILE
+    ========================================= -->
+    <meta name="theme-color" content="#ff7900">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Confrérie Écarlate">
+
+    <!-- =========================================
+         POLICES & ICÔNES
+    ========================================= -->
+    <!-- 🚀 Preconnect : ouvre la connexion vers Google Fonts en avance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icônes Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- =========================================
+         STYLES & MANIFEST
+    ========================================= -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+    <div id="app-shell">
+
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <img src="assets/logo.png" alt="Logo Guilde" class="logo"
+                onerror="this.src='https://via.placeholder.com/50';">
+            <h2>La confrérie écarlate !</h2>
+        </div>
+        <ul class="nav-links">
+            <!-- Icônes modifiées pour coller à l'univers Dofus (Boussole, Parchemin, Sablier, Bouclier) -->
+            <li class="active">
+                <a href="#dashboard" data-section="dashboard">
+                    <i class="fa-solid fa-compass" aria-hidden="true"></i> Tableau de bord
+                </a>
+            </li>
+            <li>
+                <a href="#demandes" data-section="demandes">
+                    <i class="fa-solid fa-scroll" aria-hidden="true"></i> Entraide
+                </a>
+            </li>
+            <li>
+                <a href="#evenements" data-section="evenements">
+                    <i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> Événements
+                </a>
+            </li>
+            <li>
+                <a href="#profils" data-section="profils">
+                    <i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Membres
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <h1>Tableau de bord</h1>
+            <div class="user-info">
+                <!-- Bouton de téléchargement de l'application -->
+                <button id="install-btn" class="btn-primary"
+                    style="display: none; padding: 10px 15px; font-size: 0.9rem;"
+                    aria-label="Installer l'application sur votre appareil">
+                    <i class="fa-solid fa-download" aria-hidden="true"></i> Installer l'app
+                </button>
+
+                <!-- Bouton de bascule de thème (listener attaché en JS via son id) -->
+                <button id="theme-toggle-btn" class="theme-toggle" title="Changer de thème"
+                    aria-label="Changer de thème (clair/sombre)">
+                    <i class="fa-solid fa-sun" aria-hidden="true"></i>
+                </button>
+
+                <span id="user-welcome">Bienvenue, chers membres !</span>
+
+                <img id="user-avatar" src="assets/logo.png" alt="Avatar" class="avatar"
+                    onerror="this.src='https://via.placeholder.com/40';">
+            </div>
+        </header>
+
+        <div id="app-container">
+
+            <section id="dashboard" class="view-section active-view">
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+                        <div class="stat-info">
+                            <h3>Demandes Actives</h3>
+                            <p id="stat-demandes">5</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-dragon" aria-hidden="true"></i>
+                        <div class="stat-info">
+                            <h3>Événements à venir</h3>
+                            <p id="stat-events">2</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-users" aria-hidden="true"></i>
+                        <div class="stat-info">
+                            <h3>Membres inscrits</h3>
+                            <p id="stat-membres">42</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Dernières demandes d'aide</h2>
+                            <button class="btn-primary" data-section="demandes">+ Nouvelle</button>
+                        </div>
+                        <ul class="list-preview" id="recent-requests">
+                            <li class="list-item">
+                                <div class="item-icon diff-haute">Haute</div>
+                                <div class="item-details">
+                                    <strong>Passage Donjon Comte Harebourg</strong>
+                                    <span>Par <em>Dark-Lame</em> - Succès Duo</span>
+                                </div>
+                                <div class="item-action">
+                                    <button class="btn-secondary">Aider</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Prochains Événements</h2>
+                            <button class="btn-primary" data-section="evenements">Voir tout</button>
+                        </div>
+                        <ul class="list-preview" id="upcoming-events">
+                            <li class="list-item">
+                                <div class="item-date">
+                                    <span class="day">28</span>
+                                    <span class="month">Mai</span>
+                                </div>
+                                <div class="item-details">
+                                    <strong>Soirée Songes Infinis</strong>
+                                    <span>20:30 - Reste 2 places</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="demandes" class="view-section">
+                <h2>Gérer les demandes d'aide</h2>
+                <p>Contenu des demandes à intégrer ici...</p>
+            </section>
+
+            <section id="evenements" class="view-section">
+                <h2>Calendrier et Événements</h2>
+                <p>Contenu des événements à intégrer ici...</p>
+            </section>
+
+            <section id="profils" class="view-section">
+                <h2>Annuaire de la guilde</h2>
+                <p>Liste des joueurs et profils à intégrer ici...</p>
+            </section>
+
+        </div>
+    </main>
+
+    </div><!-- #app-shell -->
+
+    <!-- Chargement des modules JS (ordre important) -->
+    <script src="js/core/storage.js"></script>
+    <script src="js/core/theme.js"></script>
+    <script src="js/core/render/dashboard.js"></script>
+    <script src="js/core/render/demandes.js"></script>
+    <script src="js/core/render/evenements.js"></script>
+    <script src="js/core/render/profils.js"></script>
+    <script src="js/core/router.js"></script>
+    <script src="js/core/init.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
